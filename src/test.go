@@ -20,7 +20,8 @@ func test_sort(){
 
 
 	//sort.SelectionSort(data)
-	sort.BubbleSort(data)
+	//sort.BubbleSort(data)
+	sort.InsertionSort(data)
 
 	fmt.Println("sorted data :")
 	fmt.Println(data)

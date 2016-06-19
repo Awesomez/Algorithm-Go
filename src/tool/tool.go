@@ -12,7 +12,7 @@ func swap(data []int,a int, b int){
 }
 
 func MakeTestData(n int) []int{
-	file,err:=os.Open("./tool/sortData.txt");
+	file,err:=os.Open("./src/tool/sortData.txt");
 	if err!=nil {
 		fmt.Println(err);
 		os.Exit(1)
