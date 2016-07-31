@@ -4,26 +4,26 @@ func QuickSort(data []int){
 	quick(data,0,len(data)-1)
 }
 
-func quick(data []int,low int,hight int){
-	if low<hight {
-		mid:=partition(data,low,hight)
+func quick(data []int,low int,high int){
+	if low<high {
+		mid:=partition(data,low,high)
 		quick(data,low,mid-1)
-		quick(data,mid+1,hight)
+		quick(data,mid+1,high)
 	}
 }
 
-func partition(data []int, low int, hight int) int {
+func partition(data []int, low int, high int) int {
 	flag:=data[low]
-	for low<hight {
-		for low<hight && flag<=data[hight] {
-			hight--
+	for low<high {
+		for low<high && flag<=data[high] {
+			high--
 		}
-		data[low]=data[hight]
+		data[low]=data[high]
 
-		for low<hight && data[low]<=flag {
+		for low<high && data[low]<=flag {
 			low++
 		}
-		data[hight]=data[low]
+		data[high]=data[low]
 	}
 	data[low]=flag
 	return low
