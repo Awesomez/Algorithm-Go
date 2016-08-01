@@ -57,7 +57,7 @@ func (tree BSTree) GetPredecessor(data int) *TreeNode{
 	}
 	//2.1 若该节点是其父节点的右边孩子，那么该节点的前驱结点即为其父节点。
 	//2.2 若该节点是其父节点的左边孩子，那么需要沿着其父亲节点一直向树的顶端寻找，
-	// 直到找到一个节点P，P节点也是其父节点Q的右孩子,那么Q就是后继节点
+	// 直到找到一个节点P，P节点也是其父节点Q的右孩子,那么Q就是前驱节点
 	for cur!=nil {
 		if cur==cur.parent.right{
 			return cur.parent
@@ -85,7 +85,7 @@ func (tree *BSTree) Delete(data int) {
 				node.parent.left=nil
 			}
 		}
-	//2.就把这个节点的直接后继或直接前继的值赋给这个节点，然后删除直接后继节点即可
+	//2.如果要删除的节点既有左孩子又有右孩子,就把这个节点的直接后继或直接前继的值赋给这个节点，然后删除直接后继节点即可
 	}else if node.left!=nil && node.right!=nil {
 		successor:=tree.GetSuccessor(node.data)
 		node.data=successor.data
@@ -185,5 +185,37 @@ func (tree BSTree) IsEmpty() bool{
 
 func (tree *BSTree) Clear(){
 	tree.root=nil
+}
+
+/**
+前序遍历：根节点->左子树->右子树
+中序遍历：左子树->根节点->右子树
+后序遍历：左子树->右子树->根节点
+ */
+/**
+中序遍历
+ */
+func (tree BSTree) InOrder(node *TreeNode){
+    if node!=nil {
+        tree.InOrder(node.left)
+        println(node.data)
+        tree.InOrder(node.right)
+    }
+}
+
+func (tree BSTree) PreOrder(node *TreeNode){
+    if node!=nil {
+        println(node.data)
+        tree.PreOrder(node.left)
+        tree.PreOrder(node.right)
+    }
+}
+
+func (tree BSTree) PostOrder(node *TreeNode){
+    if node!=nil {
+        tree.PostOrder(node.left)
+        tree.PostOrder(node.right)
+        println(node.data)
+    }
 }
 
