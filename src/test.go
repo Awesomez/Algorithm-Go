@@ -5,6 +5,7 @@ import (
 	"./sort"
 	"./tool"
 	"./stack"
+	"./search"
 )
 
 func main() {
@@ -24,7 +25,18 @@ func main() {
 	fmt.Println(sl)
 	*/
 
-    test_stack()
+    //test_stack()
+    test_binarySearch();
+}
+
+func test_binarySearch(){
+    array := []int{1, 3, 5, 7, 9, 11, 13, 15}
+    e:=12;
+    a:=search.BinarySearch(array,e)
+    fmt.Println(a)
+
+    a=search.BinarySearchRecursion(array,e)
+    fmt.Println(a)
 }
 
 func test_stack(){
